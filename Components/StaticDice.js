@@ -31,19 +31,19 @@ export default class staticDice extends React.Component {
               style={styles.button}
               onPress={()=>this.rollDice(4)}
               >
-                <Text>D4</Text>
+                <Text style={styles.text}>D4</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.button}
               onPress={()=>this.rollDice(6)}
               >
-                <Text>D6</Text>
+                <Text style={styles.text}>D6</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.button}
               onPress={()=>this.rollDice(8)}
               >
-                <Text>D8</Text>
+                <Text style={styles.text}>D8</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.container}>
@@ -51,19 +51,19 @@ export default class staticDice extends React.Component {
               style={styles.button}
               onPress={()=>this.rollDice(10)}
               >
-                <Text>D10</Text>
+                <Text style={styles.text}>D10</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.button}
               onPress={()=>this.rollDice(12)}
               >
-                <Text>D12</Text>
+                <Text style={styles.text}>D12</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.button}
               onPress={()=>this.rollDice(20)}
               >
-                <Text>D20</Text>
+                <Text style={styles.text}>D20</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -77,8 +77,11 @@ export default class staticDice extends React.Component {
       alignItems: 'center',
       flexDirection:'row',
     },
+    text: {
+      color: 'rgb(113, 172, 85)'
+    },
     button: {
-      backgroundColor: '#DDDDDD',
+      backgroundColor: 'rgb(73, 91, 133)',
       padding: 10,
       width: 50
     },

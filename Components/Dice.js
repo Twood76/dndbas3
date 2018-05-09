@@ -27,15 +27,15 @@ export default class dice extends React.Component {
       let diceType = parsed.type[index]
       let DTDisplay
       let symbol
-      if(index) symbol = value>=0 ? <Text> + </Text> : <Text> - </Text>
+      if(index) symbol = value>=0 ? <Text key={'Positive ' + {index} + {value} }> + </Text> : <Text key={'Negative ' + {index} + {value} }> - </Text>
       total = total + value
       if(diceType){
-        DTDisplay = <Text>(D{diceType})</Text>
+        DTDisplay = <Text key={ {diceType} + {value} }>(D{diceType})</Text>
       }
-      let roll = <Text>{Math.abs(value)}</Text>
-      return <Text>{symbol}{DTDisplay}{roll}</Text>
+      let roll = <Text key={{value} + ' Roll'}>{Math.abs(value)}</Text>
+      return <Text key={'Final '+ {symbol} + {roll} }>{symbol}{DTDisplay}{roll}</Text>
     })
-    displayArr[displayArr.length] = <Text> = {total}</Text>
+    displayArr[displayArr.length] = <Text key={'Total'}> = {total}</Text>
     this.props.addRoll(displayArr)
     this.setState({parseString: displayArr})
   }
@@ -44,16 +44,19 @@ export default class dice extends React.Component {
 
   render(){
     return(
-      <View>
+      <View style={styles.container}>
         <TextInput
+          style={styles.input}
           keyboardType='numeric'
+          clearTextOnFocus = {true}
+          placeholder="Type Here"
           onChangeText={(text) => this.setState({userInput: text})}
        />
        <TouchableOpacity
          style={styles.button}
          onPress={this.rollDice}
          >
-           <Text>Button</Text>
+           <Text style={{color:'rgb(113, 172, 85)'}}>Custom</Text>
        </TouchableOpacity>
       </View>
     )
@@ -64,13 +67,18 @@ export default class dice extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flexWrap: 'wrap',
-    alignItems: 'flex-start',
-    flexDirection:'row',
+    alignItems: 'center',
+  },
+  input: {
+    backgroundColor: 'rgb(8, 22, 55)',
+    width: 150,
+    color: 'rgb(113, 172, 85)'
   },
   button: {
     alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: 10
+    backgroundColor: 'rgb(73, 91, 133)',
+    padding: 10,
+    width: 150
   },
   countContainer: {
     alignItems: 'center',

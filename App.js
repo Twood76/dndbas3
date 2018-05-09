@@ -27,11 +27,16 @@ export default class App extends React.Component {
   }
 
   render() {
+    let current = this.state.diceHistory[0]
+    let history = this.state.diceHistory.slice(2)
     return (
+
       <View style={styles.container}>
-        <StaticDice addRoll = {this.addRoll} />
         <Dice addRoll = {this.addRoll} />
-        <Text>{this.state.diceHistory}</Text>
+        <StaticDice addRoll = {this.addRoll} />
+        <Text style={styles.text}>Current: {current}</Text>
+        <Text style={styles.text}>History:</Text>
+        <Text style={styles.text}>{history}</Text>
       </View>
     );
   }
@@ -39,9 +44,12 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'rgb(23, 40, 81)',
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text:{
+        color: 'rgb(113, 172, 85)'
+  }
 });
