@@ -36,13 +36,15 @@ export default class dice extends React.Component {
       return <Text>{symbol}{DTDisplay}{roll}</Text>
     })
     displayArr[displayArr.length] = <Text> = {total}</Text>
+    this.props.addRoll(displayArr)
     this.setState({parseString: displayArr})
   }
+
+
 
   render(){
     return(
       <View>
-        <Text>Hello From Dice</Text>
         <TextInput
           keyboardType='numeric'
           onChangeText={(text) => this.setState({userInput: text})}
@@ -53,7 +55,6 @@ export default class dice extends React.Component {
          >
            <Text>Button</Text>
        </TouchableOpacity>
-       <Text>{this.state.parseString}</Text>
       </View>
     )
   }
@@ -62,9 +63,9 @@ export default class dice extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 10
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    flexDirection:'row',
   },
   button: {
     alignItems: 'center',
